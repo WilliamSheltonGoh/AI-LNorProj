@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Projects & Notes | William Shelton Goh</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 基础切换逻辑：默认隐藏英文 */
+        .lang-en { display: none; }
+        
+        /* 简单的语言切换按钮样式（如果你的CSS没写这部分） */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .lang-switcher button {
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
 
+    <div class="lang-switcher">
+        <button onclick="switchLang('zh')">中文</button>
+        <button onclick="switchLang('en')">English</button>
+    </div>
+
+    <header class="header container">
+        <h1 class="lang-zh">AI 项目与笔记</h1>
+        <h1 class="lang-en">AI Projects & Notes</h1>
+    </header>
+
+    <main class="container">
+        <section class="abstract">
+            <h2 class="lang-zh">摘要</h2>
+            <h2 class="lang-en">Abstract</h2>
+            <p class="lang-zh">这里是关于我的 AI 研究和项目实践的集中展示。涵盖了深度学习、自然语言处理以及相关笔记。</p>
+            <p class="lang-en">This is a centralized showcase of my AI research and project practices, covering deep learning, NLP, and technical notes.</p>
+        </section>
+
+        <hr>
+
+        <section class="projects">
+            <h2 class="lang-zh">项目精选</h2>
+            <h2 class="lang-en">Featured Projects</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="lang-zh">AI 模型优化</h3>
+                    <h3 class="lang-en">AI Model Optimization</h3>
+                    <p class="lang-zh">关于提高大规模语言模型推理效率的研究。</p>
+                    <p class="lang-en">Research on improving the inference efficiency of LLMs.</p>
+                    <span class="tag">PyTorch</span> <span class="tag">LLM</span>
+                </div>
+                <div class="card">
+                    <h3 class="lang-zh">自动化笔记系统</h3>
+                    <h3 class="lang-en">Auto-Note System</h3>
+                    <p class="lang-zh">基于 RAG 架构的知识库管理工具。</p>
+                    <p class="lang-en">Knowledge base management tool based on RAG architecture.</p>
+                    <span class="tag">Python</span> <span class="tag">VectorDB</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="posts">
+            <h2 class="lang-zh">最新文章</h2>
+            <h2 class="lang-en">Latest Posts</h2>
+            <ul class="post-list">
+                <li>
+                    <span class="date">2026-02-22</span>
+                    <a href="#" class="lang-zh">理解 Transformer 的注意力机制</a>
+                    <a href="#" class="lang-en">Understanding Attention in Transformers</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer container">
+        <hr>
+        <div class="contact-info">
+            <h3 class="lang-zh">联系我</h3>
+            <h3 class="lang-en">Contact Me</h3>
+            <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+            <p>Main Site: <a href="https://williamsheltongoh.github.io" target="_blank">williamsheltongoh.github.io</a></p>
+        </div>
+        <p class="copyright">© 2026 William Shelton Goh</p>
+    </footer>
+
+    <script>
+        function switchLang(lang) {
+            const zhElements = document.querySelectorAll('.lang-zh');
+            const enElements = document.querySelectorAll('.lang-en');
+            
+            if (lang === 'zh') {
+                zhElements.forEach(el => el.style.display = 'block');
+                enElements.forEach(el => el.style.display = 'none');
+                document.documentElement.lang = 'zh';
+            } else {
+                zhElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'block');
+                document.documentElement.lang = 'en';
+            }
+        }
+    </script>
+</body>
+</html>
