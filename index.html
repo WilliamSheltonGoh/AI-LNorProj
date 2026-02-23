@@ -5,24 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Projects & Notes | William Shelton Goh</title>
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        /* 基础切换逻辑：默认隐藏英文 */
+        /* 1. 语言切换逻辑 */
         .lang-en { display: none; }
         
-        /* 简单的语言切换按钮样式（如果你的CSS没写这部分） */
+        /* 2. 按钮样式优化：确保一样大 */
         .lang-switcher {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 25px;
+            right: 25px;
             z-index: 1000;
+            display: flex;
+            gap: 5px;
         }
         .lang-switcher button {
-            padding: 8px 15px;
+            width: 85px; /* 固定宽度确保对齐 */
+            padding: 8px 0;
             cursor: pointer;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            border-radius: 6px;
+            border: 1px solid #007aff;
             background: #fff;
+            color: #007aff;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
+        .lang-switcher button:hover {
+            background: #007aff;
+            color: #fff;
+        }
+
+        /* 3. 卡片布局设计 */
+        .section-title {
+            margin-top: 40px;
+            border-left: 5px solid #007aff;
+            padding-left: 15px;
+            font-size: 1.5rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        /* 这个就是你要求的“框”，方便复制 */
+        .card {
+            border: 1px solid #e1e4e8;
+            border-radius: 12px;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .tag {
+            display: inline-block;
+            background: #f0f2f5;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #586069;
+            margin-right: 5px;
+        }
+
+        /* 基础容器 */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 60px 0 20px; text-align: center; }
+        .abstract { color: #666; line-height: 1.6; text-align: center; }
+        footer { padding: 40px 0; text-align: center; font-size: 0.9rem; }
+        a { color: #007aff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -32,64 +88,90 @@
         <button onclick="switchLang('en')">English</button>
     </div>
 
-    <header class="header container">
+    <header class="container">
         <h1 class="lang-zh">AI 项目与笔记</h1>
         <h1 class="lang-en">AI Projects & Notes</h1>
+        <div class="abstract">
+            <p class="lang-zh">欢迎来到我的个人库。这里记录了关于大语言模型的研究进展以及学术课程笔记。</p>
+            <p class="lang-en">Welcome to my repository. This space documents LLM research and academic lecture notes.</p>
+        </div>
     </header>
 
     <main class="container">
-        <section class="abstract">
-            <h2 class="lang-zh">摘要</h2>
-            <h2 class="lang-en">Abstract</h2>
-            <p class="lang-zh">这里是关于我的 AI 研究和项目实践的集中展示。涵盖了深度学习、自然语言处理以及相关笔记。</p>
-            <p class="lang-en">This is a centralized showcase of my AI research and project practices, covering deep learning, NLP, and technical notes.</p>
-        </section>
-
-        <hr>
-
-        <section class="projects">
-            <h2 class="lang-zh">项目精选</h2>
-            <h2 class="lang-en">Featured Projects</h2>
+        
+        <section>
+            <h2 class="section-title lang-zh">LLM 笔记</h2>
+            <h2 class="section-title lang-en">LLM Notes</h2>
             <div class="card-grid">
+                
                 <div class="card">
-                    <h3 class="lang-zh">AI 模型优化</h3>
-                    <h3 class="lang-en">AI Model Optimization</h3>
-                    <p class="lang-zh">关于提高大规模语言模型推理效率的研究。</p>
-                    <p class="lang-en">Research on improving the inference efficiency of LLMs.</p>
-                    <span class="tag">PyTorch</span> <span class="tag">LLM</span>
+                    <h3 class="lang-zh">RAG 系统优化</h3>
+                    <h3 class="lang-en">RAG Optimization</h3>
+                    <p class="lang-zh">探讨如何通过混合检索提升 RAG 的准确率。</p>
+                    <p class="lang-en">Exploring accuracy improvements in RAG via hybrid search.</p>
+                    <div class="tags">
+                        <span class="tag">RAG</span><span class="tag">LLM</span>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3 class="lang-zh">自动化笔记系统</h3>
-                    <h3 class="lang-en">Auto-Note System</h3>
-                    <p class="lang-zh">基于 RAG 架构的知识库管理工具。</p>
-                    <p class="lang-en">Knowledge base management tool based on RAG architecture.</p>
-                    <span class="tag">Python</span> <span class="tag">VectorDB</span>
+                    <h3 class="lang-zh">Prompt 工程指南</h3>
+                    <h3 class="lang-en">Prompt Engineering</h3>
+                    <p class="lang-zh">整理了一套针对代码生成优化的提示词模板。</p>
+                    <p class="lang-en">A set of prompt templates optimized for code generation.</p>
+                    <div class="tags">
+                        <span class="tag">Prompt</span>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <section>
+            <h2 class="section-title lang-zh">课程笔记</h2>
+            <h2 class="section-title lang-en">Lecture Notes</h2>
+            <div class="card-grid">
+                
+                <div class="card">
+                    <h3 class="lang-zh">深度学习基础 (CS231n)</h3>
+                    <h3 class="lang-en">Deep Learning (CS231n)</h3>
+                    <p class="lang-zh">关于卷积神经网络与反向传播的详细推导。</p>
+                    <p class="lang-en">Detailed derivation of CNNs and backpropagation.</p>
+                    <div class="tags">
+                        <span class="tag">Computer Vision</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="lang-zh">统计学习方法</h3>
+                    <h3 class="lang-en">Statistical Learning</h3>
+                    <p class="lang-zh">SVM、决策树及集成学习的笔记总结。</p>
+                    <p class="lang-en">Notes on SVM, Decision Trees, and Ensemble Learning.</p>
+                    <div class="tags">
+                        <span class="tag">ML</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section class="posts">
-            <h2 class="lang-zh">最新文章</h2>
-            <h2 class="lang-en">Latest Posts</h2>
-            <ul class="post-list">
+            <h2 class="section-title lang-zh">最新动态</h2>
+            <h2 class="section-title lang-en">Latest Posts</h2>
+            <ul>
                 <li>
-                    <span class="date">2026-02-22</span>
-                    <a href="#" class="lang-zh">理解 Transformer 的注意力机制</a>
-                    <a href="#" class="lang-en">Understanding Attention in Transformers</a>
+                    <span style="color:#999">2026.02.23</span> - 
+                    <a href="#" class="lang-zh">深度剖析注意力机制</a>
+                    <a href="#" class="lang-en">Deep Dive into Attention Mechanism</a>
                 </li>
             </ul>
         </section>
+
     </main>
 
-    <footer class="footer container">
-        <hr>
-        <div class="contact-info">
-            <h3 class="lang-zh">联系我</h3>
-            <h3 class="lang-en">Contact Me</h3>
-            <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-            <p>Main Site: <a href="https://williamsheltongoh.github.io" target="_blank">williamsheltongoh.github.io</a></p>
-        </div>
-        <p class="copyright">© 2026 William Shelton Goh</p>
+    <footer class="container">
+        <hr style="border:0; border-top:1px solid #eee; margin-bottom: 20px;">
+        <p class="lang-zh">联系我：<a href="mailto:your-email@example.com">Email</a> | 主站：<a href="https://williamsheltongoh.github.io" target="_blank">williamsheltongoh.github.io</a></p>
+        <p class="lang-en">Contact: <a href="mailto:your-email@example.com">Email</a> | Home: <a href="https://williamsheltongoh.github.io" target="_blank">williamsheltongoh.github.io</a></p>
+        <p>© 2026 William Shelton Goh</p>
     </footer>
 
     <script>
